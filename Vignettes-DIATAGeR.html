@@ -368,7 +368,7 @@ lipidomics.</p>
 <div id="required-data" class="section level1">
 <h1>Required Data</h1>
 <p>DIATAGeR requires two data inputs: a feature list and MS2 spectra.
-Feature list can be MS-DIAL alignment file or generic format <a href="https://shorturl.at/COesX">[feature list example]</a>. MS2 spectra
+Feature list can be an MS-DIAL alignment file or generic format <a href="https://shorturl.at/COesX">[feature list example]</a>. MS2 spectra
 can be in txt (peak list exported from MSDIAL), msp and mgf format.</p>
 </div>
 <div id="installation" class="section level1">
@@ -395,7 +395,7 @@ details, please use
 <code>help(&#39;name of the function&#39;, package = &quot;DIATAGeR&quot;)</code></p>
 <div id="step-1-measurefileimport-function-feature-list-import" class="section level3">
 <h3>Step 1: measureFileImport Function: Feature list Import</h3>
-<p>measureFileImport reads in feature list (MSDIAL Alignment file or
+<p>measureFileImport reads in the feature list (MSDIAL Alignment file or
 Generic Format).</p>
 <div id="example" class="section level4">
 <h4>Example:</h4>
@@ -447,17 +447,16 @@ spectra</h3>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>DIADataObj <span class="ot">=</span> DIA_Pos <span class="co"># the object stores feature list</span></span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>ppmtol <span class="co">#ppm tolerance</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>low.intensity.cutoff <span class="co"># Anything peaks with intensity below this value will be </span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co"># removed. Default 100.</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>density.cutoff <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>) <span class="co">#If TRUE, a density-based cutoff will be applied.</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>density.cutoff.value <span class="co"># Default 1. Change with caution. </span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#Example</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>DIA_Pos <span class="ot">&lt;-</span> <span class="fu">RemoveIsotopes</span>(<span class="at">DIADataObj =</span> DIA_Pos, </span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>                        <span class="at">ppmtol =</span> <span class="dv">15</span>, </span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>                        <span class="at">low.intensity.cutoff=</span><span class="dv">100</span>, </span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>                        <span class="at">density.cutoff=</span>T, </span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>                        <span class="at">density.cutoff.value=</span><span class="dv">1</span>)</span></code></pre></div>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>low.intensity.cutoff <span class="co"># Any peaks with intensity below this value will be removed. Default 100.</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>density.cutoff <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>) <span class="co">#If TRUE, a density-based cutoff will be applied.</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>density.cutoff.value <span class="co"># Default 1. Change with caution. </span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#Example</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>DIA_Pos <span class="ot">&lt;-</span> <span class="fu">RemoveIsotopes</span>(<span class="at">DIADataObj =</span> DIA_Pos, </span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>                        <span class="at">ppmtol =</span> <span class="dv">15</span>, </span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>                        <span class="at">low.intensity.cutoff=</span><span class="dv">100</span>, </span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>                        <span class="at">density.cutoff=</span>T, </span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>                        <span class="at">density.cutoff.value=</span><span class="dv">1</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="step-4-lipididentifier-function-tg-identification" class="section level3">
@@ -473,33 +472,32 @@ spectra</h3>
 <span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>version <span class="co"># To specify the version of generated result file.</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>ms1.precursors <span class="co">#Number of precursors found in MS1 to identify compounds. Default to 1 </span></span>
 <span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>ms2.precursors <span class="co">#Number of precursors found in MS2 to identify compounds. </span></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>which.frag <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;any&quot;</span>,<span class="st">&quot;firsttwo&quot;</span>) <span class="co">#specifying whether any fragment </span></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># should be used or if the first two fragments should be used for identification. Default &#39;any&#39;.</span></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>max.tails <span class="co"># list of desired number of carbons and the maximum number of double </span></span>
-<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&#39; bonds for each fatty acyls. </span></span>
-<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&#39; Default = &quot;8.2, 9.0, 10.2, 11.0, 12.3, 13.1, 14.3, 15.3, 16.5, 17.3, </span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co">#&#39; 18.5, 19.5, 20.6, 21.5, 22.6, 23.0, 24.4, 25.0, 26.0&quot;</span></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>exact.tails <span class="co"># library can be customizable for specific tails. Default NULL</span></span>
-<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>print.spectra <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>) <span class="co"># If TRUE, prints MS/MS spectra and mirrored </span></span>
-<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="co"># reference peaks. Default FALSE. </span></span>
-<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>write.annotations <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="co"># If TRUE, the function automatically writes </span></span>
-<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co"># RDS file of identified lipids. Default TRUE. </span></span>
-<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a></span>
-<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co">#Example: </span></span>
-<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="fu">LipidIdentifier</span>(<span class="at">DIADataObj =</span> DIA_Pos,</span>
-<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>                <span class="at">lipid =</span> <span class="st">&quot;TAG&quot;</span>, </span>
-<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>                <span class="at">ion.mode =</span> <span class="st">&quot;Pos&quot;</span>, </span>
-<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>                <span class="at">format =</span> <span class="st">&quot;MSDIAL&quot;</span>,</span>
-<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>                <span class="at">ppmtol=</span><span class="dv">15</span>, <span class="at">rttol=</span><span class="dv">5</span>, </span>
-<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a>                <span class="at">intensity.window =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">Inf</span>),</span>
-<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a>                <span class="at">version =</span> <span class="st">&quot;September2024&quot;</span>, </span>
-<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a>                <span class="at">ms1.precursors=</span> <span class="dv">1</span>, <span class="at">ms2.precursors =</span> <span class="dv">1</span>,</span>
-<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a>                <span class="at">max.tails =</span> <span class="st">&quot;8.2, 9.0, 10.2, 11.0, 12.3, 13.1, 14.3, 15.3, 16.5, 17.3, 18.5, 19.5, 20.6, 21.5, 22.6, 23.0, 24.4, 25.0, 26.0&quot;</span>,</span>
-<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>                <span class="at">exact.tails =</span> <span class="cn">NULL</span>,</span>
-<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>                <span class="at">which.frag =</span> <span class="st">&quot;any&quot;</span>, </span>
-<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>                <span class="at">print.spectra =</span> F,</span>
-<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a>                <span class="at">write.annotations =</span> T)</span></code></pre></div>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>which.frag <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;any&quot;</span>,<span class="st">&quot;firsttwo&quot;</span>) <span class="co">#specifying whether any fragment should be used or only the first two fragments for identification. Default &#39;any&#39;.</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>max.tails <span class="co"># list of desired number of carbons and the maximum number of double </span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&#39; bonds for each fatty acyls. </span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&#39; Default = &quot;8.2, 9.0, 10.2, 11.0, 12.3, 13.1, 14.3, 15.3, 16.5, 17.3, </span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&#39; 18.5, 19.5, 20.6, 21.5, 22.6, 23.0, 24.4, 25.0, 26.0&quot;</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>exact.tails <span class="co"># library can be customizable for specific tails. Default NULL</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>print.spectra <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>) <span class="co"># If TRUE, prints MS/MS spectra and mirrored </span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># reference peaks. Default FALSE. </span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>write.annotations <span class="ot">=</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>) <span class="co"># If TRUE, the function automatically writes </span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co"># RDS file of identified lipids. Default TRUE. </span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#Example: </span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="fu">LipidIdentifier</span>(<span class="at">DIADataObj =</span> DIA_Pos,</span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>                <span class="at">lipid =</span> <span class="st">&quot;TAG&quot;</span>, </span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>                <span class="at">ion.mode =</span> <span class="st">&quot;Pos&quot;</span>, </span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>                <span class="at">format =</span> <span class="st">&quot;MSDIAL&quot;</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>                <span class="at">ppmtol=</span><span class="dv">15</span>, <span class="at">rttol=</span><span class="dv">5</span>, </span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>                <span class="at">intensity.window =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="cn">Inf</span>),</span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a>                <span class="at">version =</span> <span class="st">&quot;September2024&quot;</span>, </span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a>                <span class="at">ms1.precursors=</span> <span class="dv">1</span>, <span class="at">ms2.precursors =</span> <span class="dv">1</span>,</span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a>                <span class="at">max.tails =</span> <span class="st">&quot;8.2, 9.0, 10.2, 11.0, 12.3, 13.1, 14.3, 15.3, 16.5, 17.3, 18.5, 19.5, 20.6, 21.5, 22.6, 23.0, 24.4, 25.0, 26.0&quot;</span>,</span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a>                <span class="at">exact.tails =</span> <span class="cn">NULL</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>                <span class="at">which.frag =</span> <span class="st">&quot;any&quot;</span>, </span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>                <span class="at">print.spectra =</span> F,</span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>                <span class="at">write.annotations =</span> T)</span></code></pre></div>
 <p>A folder named according to ion.mode (Pos/Neg) will be created in the
 working directory and contain the result file (Eg:
 Identified_TAG_Pos_September2024_1). This file will contain TGs
